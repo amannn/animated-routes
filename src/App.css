@@ -22,4 +22,5 @@
 
 .App__children {
   position: relative;
+  margin: 24px;
 }

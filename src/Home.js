@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import fadeInOut from './fadeInOut';
 
-class Home extends Component {
+export default class Home extends Component {
   render() {
     return (
       <div className="Home">
@@ -11,5 +10,3 @@ class Home extends Component {
     );
   }
 }
-
-export default fadeInOut(Home);

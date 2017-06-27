@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import fadeInOut from './fadeInOut';
 
-class Subpage extends Component {
+export default class Subpage extends Component {
   render() {
     return (
       <div className="Subpage">
@@ -11,5 +10,3 @@ class Subpage extends Component {
     );
   }
 }
-
-export default fadeInOut(Subpage);
