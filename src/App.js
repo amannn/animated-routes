@@ -14,8 +14,8 @@ export default class App extends Component {
           <Link to="/subpage">Subpage</Link>
         </div>
         <div className="App__children">
-          <Route exact path="/" component={Home} />
-          <Route exact path="/subpage" component={Subpage} />
+          <FadeInRoute exact path="/" component={Home} />
+          <FadeInRoute exact path="/subpage" component={Subpage} />
         </div>
       </div>
     );
