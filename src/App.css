@@ -1,0 +1,25 @@
+.App {
+  display: flex;
+  flex-flow: column;
+  font-family: sans-serif;
+}
+
+.TopBar {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 24px;
+}
+
+.TopBar a {
+  margin-right: 18px;
+  text-decoration: none;
+}
+
+.page {
+  padding: 0 24px;
+}
+
+.App__children {
+  position: relative;
+}
