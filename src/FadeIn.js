@@ -1,8 +1,29 @@
-import React, {Component} from 'react';
+// @flow
+import React, {Component, Element} from 'react';
 import * as Animated from 'animated/lib/targets/react-dom';
 import './FadeIn.css';
 
+type SpringConfig = {
+  friction: number,
+  tension: number
+};
+
+type Props = {
+  visible: boolean,
+  enterSpringConfig: SpringConfig,
+  leaveSpringConfig: SpringConfig,
+  children: Element<any>
+};
+
+type State = {
+  isRendering: boolean,
+  animation: Animated.Value
+};
+
 export default class FadeIn extends Component {
+  props: Props;
+  state: State;
+
   static defaultProps = {
     enterSpringConfig: {
       friction: 6,
@@ -14,7 +35,7 @@ export default class FadeIn extends Component {
     }
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       isRendering: props.visible,
@@ -22,7 +43,7 @@ export default class FadeIn extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props) {
     const {enterSpringConfig, leaveSpringConfig} = this.props;
     if (!this.props.visible && nextProps.visible) {
       setTimeout(() => {

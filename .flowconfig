@@ -1,0 +1,11 @@
+[ignore]
+.*/node_modules/.*
+
+[include]
+flow-typed
+
+[libs]
+
+[options]
+
+[lints]
