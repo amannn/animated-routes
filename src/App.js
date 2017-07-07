@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import FadeInRoute from './FadeInRoute';
 import Home from './Home';
 import Subpage from './Subpage';
@@ -9,7 +9,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="TopBar">
+        <div className="App__nav">
           <Link to="/">Home</Link>
           <Link to="/subpage">Subpage</Link>
         </div>

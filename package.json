@@ -4,15 +4,15 @@
   "private": true,
   "devDependencies": {
     "eslint-plugin-prettier": "2.1.2",
-    "prettier": "1.4.4",
-    "react-scripts": "1.0.7"
+    "prettier": "1.5.2",
+    "react-scripts": "1.0.10"
   },
   "dependencies": {
     "animated": "0.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "4.1.1",
-    "react-transition-group": "1.2.0"
+    "react-transition-group": "2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

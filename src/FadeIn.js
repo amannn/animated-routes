@@ -2,40 +2,60 @@ import React, {Component} from 'react';
 import * as Animated from 'animated/lib/targets/react-dom';
 import './FadeIn.css';
 
-export default class AnimatedWrapper extends Component {
+export default class FadeIn extends Component {
+  static defaultProps = {
+    enterSpringConfig: {
+      friction: 6,
+      tension: 16
+    },
+    leaveSpringConfig: {
+      friction: 7,
+      tension: 80
+    }
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      animation: new Animated.Value(0)
+      isRendering: props.visible,
+      animation: new Animated.Value(props.visible ? 1 : 0)
     };
   }
 
-  componentWillAppear(cb) {
-    this.state.animation.setValue(1);
-    cb();
-  }
-
-  componentWillEnter(cb) {
-    setTimeout(() => {
-      Animated.spring(this.state.animation, {toValue: 1}).start();
-      cb();
-    }, 100);
-  }
-
-  componentWillLeave(cb) {
-    Animated.spring(this.state.animation, {toValue: 0}).start(cb);
+  componentWillReceiveProps(nextProps) {
+    const {enterSpringConfig, leaveSpringConfig} = this.props;
+    if (!this.props.visible && nextProps.visible) {
+      setTimeout(() => {
+        this.setState({isRendering: true});
+        Animated.spring(this.state.animation, {
+          ...enterSpringConfig,
+          toValue: 1
+        }).start();
+      }, 50);
+    } else if (this.props.visible && !nextProps.visible) {
+      Animated.spring(this.state.animation, {
+        ...leaveSpringConfig,
+        toValue: 0
+      }).start(() => {
+        if (!this.props.visible) {
+          this.setState({isRendering: false});
+        }
+      });
+    }
   }
 
   render() {
     const {children} = this.props;
-    const {animation} = this.state;
+    const {animation, isRendering} = this.state;
+
+    if (!isRendering) return null;
 
     const style = {
       opacity: animation,
       transform: Animated.template`
-        translate3d(0, ${this.state.animation.interpolate({
+        translate3d(0, ${animation.interpolate({
           inputRange: [0, 1],
-          outputRange: ['12px', '0px']
+          outputRange: ['20px', '0px']
         })}, 0)
       `
     };
